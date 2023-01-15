@@ -28,6 +28,8 @@ POSTGRES_PASSWORD="temp1234"
 POSTGRES_DB="postgres123"
 
 # Docker commands:
+Install docker desktop then run these commands in the current working directory:
+
 ```bash
 docker compose --env-file ./.env -d up postgres-dev-db
 docker compose rm -s -f -v postgres-dev-db
