@@ -21,3 +21,14 @@ For creating the URI for PostgreSQL, do the following:
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@host:5724/database_name'
 
 ```
+# make a .env file in the current directory to specify the username, password etc. 
+For example:
+POSTGRES_USER="Atman"
+POSTGRES_PASSWORD="temp1234"
+POSTGRES_DB="postgres123"
+
+# Docker commands:
+```bash
+docker compose --env-file ./.env -d up postgres-dev-db
+docker compose rm -s -f -v postgres-dev-db
+```
