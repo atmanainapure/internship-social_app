@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  postgres-dev-db:
+    image: postgres:15
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DB}"
+    volumes:
+      - ./.db/dev.data:/var/lib/postgresql/data
+    networks:
+      - social_media
+
+
+# docker compose --env-file ./python and sql files/.env -d up postgres-dev-db
+# docker compose rm -s -f -v postgres-dev-db
