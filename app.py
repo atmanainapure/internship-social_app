@@ -1,11 +1,18 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
+from dotenv import load_dotenv
+load_dotenv()
+import os
+username = os.getenv("POSTGRES_USER")
+password= os.getenv("POSTGRES_PASSWORD")
+db_name= os.getenv("POSTGRES_DB")
 
 app = Flask(__name__)
 
 # In the URI. specify your username, your password, your port and your database name.
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@host:5724/database_name'
+# Establishing a connection to a PostgreSQL database using SQLAlchemy and configuring the app.
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{username}:{password}@localhost:5432/{db_name}'
 db = SQLAlchemy(app) 
 
 class Message(db.Model):
